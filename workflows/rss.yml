@@ -8,6 +8,8 @@ on:
       - https://swyx.io/api/rss.xml
       - https://chuan.us/feed
       - https://blog.zhiheng.io/index.xml
+      - https://weekly.ursb.me/index.xml
+      - https://me.ursb.me/feed
 jobs:
   request:
     name: Make a HTTP Request
