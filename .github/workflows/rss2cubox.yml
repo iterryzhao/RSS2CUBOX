@@ -1,0 +1,29 @@
+name: Send a HTTP Request when new RSS item is detected
+on:
+  rss:
+    url: 
+      - https://happyxiao.com/feed/
+      - https://feeds.transistor.fm/digitalwriting
+      - https://threadreaderapp.com/myrss/5296e8e8-242a-4001-b851-64ef3516d32f.rss
+      - https://swyx.io/api/rss.xml
+      - https://chuan.us/feed
+      - https://blog.zhiheng.io/index.xml
+      - https://weekly.ursb.me/index.xml
+      - https://me.ursb.me/feed
+jobs:
+  request:
+    name: Make a HTTP Request
+    runs-on: ubuntu-latest
+    steps:
+      - name: Make a HTTP Request
+        uses: actionsflow/axios@v1
+        with:
+          url: https://cubox.pro/c/api/save/7d0mpc8yatj8nc
+          method: POST
+          body: |
+            {
+              "type":"url",
+              "content":"${{ on.rss.outputs.link }}", 
+              "title": "${{ on.rss.outputs.title }}",
+              "folder":"Feed"
+            }
